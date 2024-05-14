@@ -1,0 +1,23 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { signup as signupApi } from "../../services/apiAuth";
+
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+
+export function useSignup() {
+  const navigate = useNavigate();
+  const { mutate: signup } = useMutation({
+    mutationFn: signupApi,
+    onSuccess: (user) => {
+      toast.success(
+        "Account successfully created! Please verufy the new account from the user's email address."
+      );
+      navigate("/", { replace: true });
+    },
+    onError: () => {
+      toast.error("Failed to Sigup. Please check your credentials.");
+    },
+  });
+  return { signup };
+}

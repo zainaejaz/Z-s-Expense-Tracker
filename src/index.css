@@ -1,0 +1,95 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"); */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+html,
+body {
+  overflow-x: hidden;
+  font-family: "Briem Hand", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+@media screen and (max-width: 300px) {
+  .cls {
+    width: 300px;
+    font-size: 0.7rem;
+  }
+  .ul_gap {
+    gap: 0px;
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 639px) {
+  .text_size {
+    font-size: 1rem;
+  }
+  .btn_size {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1130px) {
+  .formElement {
+    /* display: flex;
+    flex-direction: column; */
+    height: 80vh;
+  }
+}
+@media screen and (max-width: 768px) {
+  .formElement {
+    /* display: flex;
+    flex-direction: column; */
+    height: 70vh;
+    width: 60%;
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .formElement {
+    /* display: flex;
+    flex-direction: column; */
+    height: 80vh;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .sectionAlignment {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .spacing {
+    margin-bottom: 40px;
+  }
+}
+@media screen and (max-width: 415px) {
+  .navLayout {
+    flex-direction: column; /* Change the direction of the flex items to column */
+    align-items: center; /* Center align the flex items */
+  }
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  margin-bottom: 0.5rem;
+}
+
+.formLabel input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  margin-top: 0.5rem;
+  border-radius: 0.25rem;
+}
