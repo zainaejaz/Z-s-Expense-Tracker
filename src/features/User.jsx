@@ -30,7 +30,7 @@ export default function User() {
   }
 
   return (
-    <section className="min-h-screen min-w-full bg-center bg-cover bg-no-repeat  bg-[url('../../public/pexels-cottonbro-3943748.jpg')] flex items-center justify-center">
+    <section className="min-h-screen min-w-full bg-center bg-cover bg-no-repeat usr-img flex items-center justify-center">
       <form
         className="formLayout flex flex-col items-center justify-center gap-4 bg-cyan-700 p-[8rem]  text-[#FFFFFF] "
         onSubmit={handleSubmit}

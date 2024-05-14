@@ -27,7 +27,7 @@ export default function SignupForm() {
   }
 
   return (
-    <div className="min-h-screen min-w-full flex flex-col md:flex-row items-center justify-around relative bg-[url('../../../public/pexels-eye4dtail-129492.jpg')] bg-center bg-cover bg-no-repeat sectionAlignment">
+    <div className="min-h-screen min-w-full flex flex-col md:flex-row items-center justify-around relative form-img bg-center bg-cover bg-no-repeat sectionAlignment">
       <form
         className="formLayout flex flex-col items-center justify-center gap-4 bg-cyan-700 p-[8rem]  text-[#FFFFFF]"
         onSubmit={handleSubmit(onSubmit)}

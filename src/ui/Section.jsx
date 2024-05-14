@@ -5,7 +5,7 @@ import Button from "./Button";
 function Section() {
   const navigate = useNavigate();
   return (
-    <section className="min-h-screen min-w-full bg-center bg-cover bg-no-repeat  bg-[url('../../public/pexels-cottonbro-3943748.jpg')]">
+    <section className="min-h-screen min-w-full bg-center bg-cover bg-no-repeat  section-pic">
       <div
         style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
         className="min-h-screen min-w-full flex flex-col justify-center items-center text-[#FFFFFF] relative"

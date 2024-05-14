@@ -79,7 +79,7 @@ export default function Budget() {
   };
 
   return (
-    <div className="min-h-screen min-w-full flex flex-col md:flex-row items-center justify-around bg-[url('../../public/pexels-eye4dtail-129492.jpg')]">
+    <div className="min-h-screen min-w-full flex flex-col md:flex-row items-center justify-around budget-img">
       <div className="flex items-center justify-center mt-7">
         <form
           onSubmit={handleSubmit(onSubmit)}
