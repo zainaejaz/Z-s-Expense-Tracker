@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 import { Link } from "react-router-dom";
 
-import {} from "../../dist/pexels-cottonbro-3943748.jpg";
+// import {} from "../../public/";
 
 export default function User() {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ export default function User() {
   }
 
   return (
-    <section className="min-h-screen min-w-full bg-center bg-cover bg-no-repeat  bg-[url('../../dist/pexels-cottonbro-3943748.jpg')] flex items-center justify-center">
+    <section className="min-h-screen min-w-full bg-center bg-cover bg-no-repeat  bg-[url('../../public/pexels-cottonbro-3943748.jpg')] flex items-center justify-center">
       <form
         className="formLayout flex flex-col items-center justify-center gap-4 bg-cyan-700 p-[8rem]  text-[#FFFFFF] "
         onSubmit={handleSubmit}

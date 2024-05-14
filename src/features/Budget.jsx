@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 
-// import {} from "../../";
+// import {} from "../../public/";
 
 import BudgetTable from "./BudgetTable";
 import {
@@ -79,7 +79,7 @@ export default function Budget() {
   };
 
   return (
-    <div className="min-h-screen min-w-full flex flex-col md:flex-row items-center justify-around bg-[url('../../dist/pexels-eye4dtail-129492.jpg')]">
+    <div className="min-h-screen min-w-full flex flex-col md:flex-row items-center justify-around bg-[url('../../public/pexels-eye4dtail-129492.jpg')]">
       <div className="flex items-center justify-center mt-7">
         <form
           onSubmit={handleSubmit(onSubmit)}
