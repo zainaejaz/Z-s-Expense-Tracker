@@ -9,4 +9,4 @@ Currently, two official plugins are available:
 
 #Expense Tracker
 
-The Z's Expense Tracker Application is a full-stack web application developed using React.js for the frontend, Supabase for the database, and React Query and Redux for state management. The application allows users to efficiently manage their expenses through a user-friendly interface
+The Z's Expense Tracker Application is a full-stack web application developed using React.js for the frontend, Supabase for the database, and React Query and Redux for state management. The application allows users to efficiently manage their expenses through a user-friendly interface.
