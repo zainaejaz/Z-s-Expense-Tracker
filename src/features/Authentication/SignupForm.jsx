@@ -96,7 +96,7 @@ export default function SignupForm() {
           {errors?.passwordConfirm?.message}
         </span>
 
-        <label>
+        <label className="btn-layout">
           <Button
             className="me-5 rounded-lg p-3 bg-[#FFFFFF] text-cyan-700"
             onClick={() => navigate("/")}

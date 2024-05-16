@@ -109,3 +109,8 @@ body {
 .section-pic {
   background-image: url("../public/pexels-cottonbro-3943748.jpg");
 }
+
+.btn-layout {
+  display: flex;
+  padding: 1rem;
+}
