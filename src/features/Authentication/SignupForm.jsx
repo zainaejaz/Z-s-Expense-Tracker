@@ -10,8 +10,10 @@ import { useSignup } from "./useSignup";
 export default function SignupForm() {
   const navigate = useNavigate();
   const { signup } = useSignup();
-  const { register, formState, getValues, handleSubmit, reset } = useForm();
-  const { errors } = formState;
+  const { register, formState, getValues, handleSubmit, reset } = useForm({
+    mode: "onChange",
+  }); // Validate the form on change
+  const { errors, isValid } = formState;
 
   function onSubmit({ fullName, email, password }) {
     signup(
@@ -21,8 +23,6 @@ export default function SignupForm() {
       }
     );
 
-    // console.log(fullName, email, password);
-    console.log("hello");
     reset();
   }
 
@@ -103,9 +103,13 @@ export default function SignupForm() {
           >
             Cancel
           </Button>
-          <Button className="rounded-lg p-3 bg-[#FFFFFF] text-cyan-700">
+          <button
+            type="submit" // Change to type="submit" to handle form submission
+            className="rounded-lg p-3 bg-[#FFFFFF] text-cyan-700"
+            disabled={!isValid} // Enable button only when form is valid
+          >
             Create new user
-          </Button>
+          </button>
         </label>
       </form>
     </div>
