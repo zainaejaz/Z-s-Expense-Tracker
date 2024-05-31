@@ -1,5 +1,4 @@
-// store.js
-
+// src/store.js
 import { configureStore } from "@reduxjs/toolkit";
 import budgetReducer from "./budgetSlice";
 
@@ -12,6 +11,7 @@ function loadState() {
     }
     return JSON.parse(serializedState);
   } catch (err) {
+    console.error("Could not load state", err);
     return undefined;
   }
 }
@@ -21,8 +21,8 @@ function saveState(state) {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("budgetState", serializedState);
-  } catch {
-    // ignore write errors
+  } catch (err) {
+    console.error("Could not save state", err);
   }
 }
 

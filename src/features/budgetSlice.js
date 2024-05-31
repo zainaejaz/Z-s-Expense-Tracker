@@ -29,6 +29,7 @@ const budgetSlice = createSlice({
     },
     deductIncome(state, action) {
       state.income -= action.payload; // Update income by adding the payload
+      console.log("income" + state.income);
       insertBudgetData(state.income, state.payment);
     },
     deductPayment(state, action) {
@@ -37,6 +38,7 @@ const budgetSlice = createSlice({
         return;
       }
       state.payment -= action.payload; // Update income by adding the payload
+      console.log("payment" + state.payment);
       insertBudgetData(state.income, state.payment);
     },
     setIsLoading(state, action) {

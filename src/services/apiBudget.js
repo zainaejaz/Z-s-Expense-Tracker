@@ -52,9 +52,10 @@ export async function insertBudget(bName, bAmount) {
 
 //insert budget row
 export async function insertBudgetData(income, payment) {
+  const budgetId = uuidv4(); // Generate a random ID
   const { data, error } = await supabase
     .from("budgetAmount")
-    .insert([{ income, payment }])
+    .insert([{ income, payment, budgetId }])
     .select()
     .single();
 
@@ -70,6 +71,19 @@ export async function insertBudgetData(income, payment) {
 export async function deleteBudget(budgetId) {
   const { data, error } = await supabase
     .from("budget")
+    .delete()
+    .eq("budgetId", budgetId);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Budget could not be deleted");
+  }
+  return data;
+}
+
+export async function deleteBudgetData(budgetId) {
+  const { data, error } = await supabase
+    .from("budgetAmount")
     .delete()
     .eq("budgetId", budgetId);
 

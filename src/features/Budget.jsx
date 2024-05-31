@@ -1,14 +1,15 @@
-import { useState } from "react";
+// src/components/Budget.js
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-
-// import {} from "../../public/";
-
 import BudgetTable from "./BudgetTable";
 import {
+  deductIncome,
+  deductPayment,
   income as incomeAction,
   payment as paymentAction,
+  setIncomeAndPayment,
 } from "./budgetSlice";
 import { getBudget, insertBudget } from "../services/apiBudget";
 import store from "./store";
@@ -17,6 +18,7 @@ export default function Budget() {
   const { income, payment } = useSelector((state) => state.budget);
   const dispatch = useDispatch();
   const [budgetData, setBudgetData] = useState([]);
+  const [budgetDataAmount, setBudgetDataAmount] = useState([]);
   const {
     register,
     handleSubmit,
@@ -28,25 +30,36 @@ export default function Budget() {
     queryKey: ["budget"],
     queryFn: getBudget,
     onSuccess: (data) => {
-      // Ensure we sync the budget data from the fetch on initial load
       setBudgetData(data);
     },
   });
 
-  const handleDeleteSuccess = (budgetId, shouldRollback = false) => {
-    if (shouldRollback) {
-      // In case of rollback, we sync with the server state
-      setBudgetData(fetchedBudgetData);
-    } else {
-      // Otherwise, we optimistically remove the item from the UI
-      setBudgetData((currentData) =>
-        currentData.filter((item) => item.budgetId !== budgetId)
-      );
+  // useEffect(() => {
+  //   // Load initial budget state from localStorage
+  //   const budgetState = JSON.parse(localStorage.getItem("budgetState"));
+  //   if (budgetState) {
+  //     dispatch(setIncomeAndPayment(budgetState.budget));
+  //   }
+  // }, [income , payment]);
+
+  useEffect(() => {
+    // Load initial budget state from localStorage
+    const budgetState = JSON.parse(localStorage.getItem("budgetState"));
+    console.log(budgetData);
+    if (budgetState) {
+      dispatch(setIncomeAndPayment(budgetState.budget));
     }
-  };
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (fetchedBudgetData) {
+      setBudgetData(fetchedBudgetData);
+    }
+  }, [fetchedBudgetData]);
 
   const onSubmit = async (data) => {
     try {
+      console.log(budgetDataAmount);
       dispatch({ type: "budget/setIsLoading", payload: true });
       if (data.bCategory === "income") {
         await dispatch(incomeAction(parseFloat(data.bAmount)));
@@ -56,7 +69,6 @@ export default function Budget() {
 
       const { income } = store.getState().budget;
 
-      // Check if income is 0 and payment is greater than 0 or if income is less than payment
       if (
         (income === 0 && parseFloat(data.bAmount) > 0) ||
         income < parseFloat(data.bAmount)
@@ -75,6 +87,16 @@ export default function Budget() {
       console.error("Error submitting budget data:", error);
     } finally {
       dispatch({ type: "budget/setIsLoading", payload: false });
+    }
+  };
+
+  const handleDeleteSuccess = async (budgetId, shouldRollback = false) => {
+    if (shouldRollback) {
+      setBudgetData(fetchedBudgetData);
+    } else {
+      setBudgetData((currentData) =>
+        currentData.filter((item) => item.budgetId !== budgetId)
+      );
     }
   };
 
